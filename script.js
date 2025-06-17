@@ -1,5 +1,3 @@
-// script.js - JavaScript functionality for Kudos Delight Compliment Generator
-
 // Import Firebase functions from CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js"
 import { getDatabase, ref, push, onValue, get } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js"
@@ -15,38 +13,47 @@ const firebaseConfig = {
   appId: "1:4769790839:web:5f0eb44512e205c6573f72"
 };
 
+// Initialize Firebase app using the configuration
+const app = initializeApp(firebaseConfig);
+
+// Get a reference to the Firebase Realtime Database service
+const database = getDatabase(app);
+
+// Reference the location in the database where compliments will be stored
+const complimentsRef = ref(database, 'compliments');
+
 // Select page elements
 const generateButton = document.getElementById('generateButton');
 const complimentDisplay = document.getElementById('compliment-display');
 const complimentForm = document.getElementById('complimentForm');
 const complimentInput = document.getElementById('complimentInput');
+const toggleFormButton = document.getElementById('toggleFormButton'); // Make sure this element exists in your HTML
 
-// Function to show/hide the submission form
+// Function to toggle visibility of the compliment submission form
 toggleFormButton.addEventListener('click', () => {
-  complimentForm.classList.toggle('hidden');
-  complimentForm.classList.contains('hidden') ? toggleFormButton.textContent = 'Add Kudos' : toggleFormButton.textContent = 'Hide Form';
+  complimentForm.classList.toggle('hidden'); // Show or hide the form
+  // Update the toggle button text based on visibility
+  toggleFormButton.textContent = complimentForm.classList.contains('hidden') ? 'Add Kudos' : 'Hide Form';
 });
 
-/** Challenge: Submit kudos 
-  - Use the provided prompt to program the form to add compliments to the database.
-**/
-
-// Function to handle form submission
+// Function to handle the compliment form submission
 complimentForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+  e.preventDefault(); // Prevent the default form submission behavior (like page refresh)
 
-    const newCompliment = complimentInput.value.trim(); // Get the value from the input field and trim any leading/trailing whitespace
+  const newCompliment = complimentInput.value.trim(); // Get the value from the input field and remove whitespace
 
-    if (newCompliment !== '') {
-        // Check if the input is not empty
-        push(complimentsRef, newCompliment) // Push the new compliment to the Firebase database
-            .then(() => {
-                complimentInput.value = ''; // Clear the input field
-                complimentForm.classList.add('hidden'); // Hide the form after submission
-                toggleFormButton.textContent = 'Add Kudos'; // Update the button text
-            })
-            .catch((error) => {
-                console.error('Error adding compliment:', error);
-            });
-    }
+  if (newCompliment !== '') {
+    // If the input is not empty, proceed to add it to the database
+    push(complimentsRef, newCompliment) // Push the compliment to the 'compliments' list in the database
+      .then(() => {
+        complimentInput.value = ''; // Clear the input field after successful submission
+        complimentForm.classList.add('hidden'); // Hide the form again
+        toggleFormButton.textContent = 'Add Kudos'; // Reset the toggle button text
+      })
+      .catch((error) => {
+        console.error('Error adding compliment:', error); // Log any errors that occur
+      });
+  } else {
+    alert('Please enter a compliment before submitting.'); // Alert if input is empty
+  }
 });
