@@ -19,11 +19,17 @@
             <button id="generateButton">Generate a Kudo</button>
             <button class="btn-secondary" id="toggleFormButton">Add Kudos</button>
             <p id="successMessage" style="display: none">Kudo added successfully!</p>
+            
+           <button id="toggleFormButton">Add Kudos</button>
+
             <form id="complimentForm" class="hidden">
-                <label for="complimentInput">Write a Kudo:</label>
-                <input type="text" id="complimentInput">
-                <button type="submit">Submit</button>
+            <input type="text" id="complimentInput" placeholder="Enter your compliment..." required />
+            <button type="submit">Submit</button>
             </form>
+
+            <div id="compliment-display"></div>
+            <button id="generateButton">Generate Compliment</button>
+
         </div>
         <script src="script.js" type="module"></script>
     </body>
