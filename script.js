@@ -6,13 +6,13 @@ import { getDatabase, ref, push, onValue, get } from "https://www.gstatic.com/fi
 
 // Firebase configuration object - contains your project's unique identifiers
 const firebaseConfig = {
-    apiKey: "AIzaSyB1f_e8lo7eT156I9gNaApEjl40PHpRFFs",
-    authDomain: "kudosdelight-c3a7c.firebaseapp.com",
-    databaseURL: "https://kudosdelight-c3a7c-default-rtdb.firebaseio.com",
-    projectId: "kudosdelight-c3a7c",
-    storageBucket: "kudosdelight-c3a7c.firebasestorage.app",
-    messagingSenderId: "4769790839",
-    appId: "1:4769790839:web:5f0eb44512e205c6573f72"
+  apiKey: "AIzaSyB1f_e8lo7eT156I9gNaApEjl40PHpRFFs",
+  authDomain: "kudosdelight-c3a7c.firebaseapp.com",
+  databaseURL: "https://kudosdelight-c3a7c-default-rtdb.firebaseio.com",
+  projectId: "kudosdelight-c3a7c",
+  storageBucket: "kudosdelight-c3a7c.firebasestorage.app",
+  messagingSenderId: "4769790839",
+  appId: "1:4769790839:web:5f0eb44512e205c6573f72"
 };
 
 // Select page elements
