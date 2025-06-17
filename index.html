@@ -1,44 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kudos Delight - Compliment Generator</title>
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>✨ Kudos Delight ✨</h1>
-        
-        <!-- Generate compliment button -->
-        <button id="generateButton">Generate Compliment</button>
-        
-        <!-- Button to show/hide the form -->
-        <button id="toggleFormButton">Add Kudos</button>
-        
-        <!-- Display area for generated compliments -->
-        <div id="compliment-display">Click "Generate Compliment" to brighten your day!</div>
-        
-        <!-- Form for submitting new compliments (initially hidden) -->
-        <div id="complimentForm" class="form-container hidden">
-            <h3>Share Your Positivity!</h3>
-            <input 
-                type="text" 
-                id="complimentInput" 
-                placeholder="Enter a wonderful compliment..."
-                maxlength="200"
-            >
-            <button type="button" id="submitButton">Submit Kudos</button>
-            
-            <!-- Success and error message containers -->
-            <div id="successMessage" class="success-message"></div>
-            <div id="errorMessage" class="error-message"></div>
+<!doctype html>
+<html>
+    <head>
+        <title>Compliment Generator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                <span class="icon material-symbols-outlined">person_celebrate</span>
+                KudosDelight
+            </h1>
+            <p class="display" id="compliment-display"></p>
+            <button id="generateButton">Generate a Kudo</button>
+            <button class="btn-secondary" id="toggleFormButton">Add Kudos</button>
+            <p id="successMessage" style="display: none">Kudo added successfully!</p>
+            <form id="complimentForm" class="hidden">
+                <label for="complimentInput">Write a Kudo:</label>
+                <input type="text" id="complimentInput">
+                <button type="submit">Submit</button>
+            </form>
         </div>
-    </div>
-
-    <!-- Link to external JavaScript file -->
-    <!-- Note: type="module" is required for Firebase imports -->
-    <script type="module" src="script.js"></script>
-</body>
+        <script src="index.js" type="module"></script>
+    </body>
 </html>
